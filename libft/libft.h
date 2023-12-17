@@ -100,6 +100,16 @@ bool		can_mull(long a, long b);
 bool		can_mulp(size_t a, size_t b);
 
 /**
+ * @brief free 2d array `ptr` and set `NULL` to `ptr`
+ * 
+ * @param ptr 2d array pointer address to free
+ */
+void		free2d(
+				void ***ptr
+				)
+			;
+
+/**
  * @brief convert `str` to `size_t` with `base` and `max`
  * 
  * @param str string to convert
@@ -367,6 +377,40 @@ size_t		ft_minp(size_t a, size_t b);
  * @return smaller value
  */
 double		ft_minf(double a, double b);
+
+/**
+ * @brief check whether `a` and `b` are equal or not
+ * 
+ * @param a value1
+ * @param b value2
+ * @return `a` and `b` are equal(`0`) or not
+ */
+int			ft_strcmp(
+				const char *a,
+				const char *b
+				)
+			;
+/**
+ * @brief duplicate `s` to newly allocated memory
+ * 
+ * @param s1 source
+ * @return duplicated string or `NULL` if allocation fails
+ */
+char		*ft_strdup(
+				const char *s1
+				)
+			;
+
+/**
+ * @brief get length of `str`
+ * 
+ * @param str string
+ * @return length of `str`
+ */
+size_t		ft_strlen(
+				const char *str
+				)
+			;
 
 // #pragma region GetNextLine
 
