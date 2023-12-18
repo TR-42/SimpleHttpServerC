@@ -18,6 +18,8 @@ SRCS_LIBFT	:=\
 	can_add.c\
 	can_mul.c\
 \
+	err_retint.c\
+\
 	free2d.c\
 \
 	ft_atop.c\
@@ -35,6 +37,7 @@ SRCS_LIBFT	:=\
 	ft_memmove.c\
 	ft_memset.c\
 	ft_min.c\
+	ft_putstr_fd.c\
 	ft_strcmp.c\
 	ft_strdup.c\
 	ft_strlen.c\
@@ -60,12 +63,16 @@ SRCS_HTTP_HEADER_LIST	:=\
 	http_header_list_get.c\
 	http_header_list_new.c\
 
+SRCS_UTILS	:=\
+	get_ipaddr_str.c\
+
 SRCS_BASE_DIR	:= srcs
 LIBFT_DIR	:= libft
 
 SRCS_NOMAIN	:=\
 	$(addprefix common/, $(SRCS_COMMON))\
 	$(addprefix http_header_list/, $(SRCS_HTTP_HEADER_LIST))\
+	$(addprefix utils/, $(SRCS_UTILS))\
 
 HEADERS_DIR	:= headers
 

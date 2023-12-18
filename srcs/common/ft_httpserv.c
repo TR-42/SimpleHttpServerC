@@ -10,7 +10,59 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_httpserv_init(void)
+// - bool
+#include <stdbool.h>
+
+// - close
+#include <unistd.h>
+
+#include <libft.h>
+
+#include <ft_httpserv.h>
+#include <utils.h>
+
+__attribute__((nonnull))
+bool	ft_httpserv_init(
+	t_httpserv *serv,
+	uint16_t port
+)
 {
-	return ;
+	serv->port = port;
+	serv->serv_addr.sin_family = AF_INET;
+	serv->serv_addr.sin_addr.s_addr = INADDR_ANY;
+	serv->serv_addr.sin_port = htons(port);
+	serv->sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	if (serv->sockfd < 0)
+		return (perror_retint("socket init", false));
+	if (bind(serv->sockfd, (struct sockaddr *)&(serv->serv_addr),
+			sizeof(serv->serv_addr)) < 0)
+		return (perror_retint("bind", false));
+	if (listen(serv->sockfd, 8) < 0)
+		return (perror_retint("listen", false));
+	return (true);
+}
+
+__attribute__((nonnull))
+bool	ft_httpserv_loop(
+	t_httpserv *serv
+)
+{
+	int			fd;
+	t_sockaddr	addr;
+	socklen_t	addrlen;
+	char		buf[INET6_ADDRSTRLEN + 1];
+
+	while (true)
+	{
+		ft_bzero(&addr, sizeof(addr));
+		addrlen = sizeof(addr);
+		fd = accept(serv->sockfd, &addr, &addrlen);
+		if (fd < 0)
+			return (perror_retint("accept", false));
+		ft_bzero(buf, sizeof(buf));
+		get_ipaddr_str(&addr, buf);
+		errstr_retint("accepted connection from", buf, 0);
+		close(fd);
+	}
+	return (true);
 }

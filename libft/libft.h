@@ -100,6 +100,46 @@ bool		can_mull(long a, long b);
 bool		can_mulp(size_t a, size_t b);
 
 /**
+ * @brief print the error message of `errno` to `stderr` and return `ret`
+ * 
+ * @param title title of the error message
+ * @param ret return value
+ * @return int value
+ */
+int			perror_retint(
+				const char *title,
+				int ret
+				)
+			;
+/**
+ * @brief print the error message of `_errno` to `stderr` and return `ret`
+ * 
+ * @param title title of the error message
+ * @param _errno error number
+ * @param ret return value
+ * @return int value
+ */
+int			strerr_retint(
+				const char *title,
+				int _errno,
+				int ret
+				)
+			;
+/**
+ * @brief print the error message to `stderr` and return `ret`
+ * 
+ * @param title title of the error message
+ * @param errstr error message
+ * @param ret return value
+ * @return int value
+ */
+int			errstr_retint(
+				const char *title,
+				const char *errstr,
+				int ret
+				)
+			;
+/**
  * @brief free 2d array `ptr` and set `NULL` to `ptr`
  * 
  * @param ptr 2d array pointer address to free
@@ -379,6 +419,18 @@ size_t		ft_minp(size_t a, size_t b);
 double		ft_minf(double a, double b);
 
 /**
+ * @brief print `s` to `fd`
+ * 
+ * @param s string
+ * @param fd file descriptor
+ */
+void		ft_putstr_fd(
+				const char *s,
+				int fd
+				)
+			;
+
+/**
  * @brief check whether `a` and `b` are equal or not
  * 
  * @param a value1
@@ -409,6 +461,18 @@ char		*ft_strdup(
  */
 size_t		ft_strlen(
 				const char *str
+				)
+			;
+/**
+ * @brief get length of `str`
+ * 
+ * @param str string
+ * @param max_len max length of `str`
+ * @return length of `str`
+ */
+size_t		ft_strnlen(
+				const char *str,
+				size_t max_len
 				)
 			;
 
