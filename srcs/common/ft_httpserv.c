@@ -16,6 +16,9 @@
 // - close
 #include <unistd.h>
 
+// - shutdown
+#include <sys/socket.h>
+
 #include <libft.h>
 
 #include <ft_httpserv.h>
@@ -42,12 +45,16 @@ bool	ft_httpserv_init(
 	return (true);
 }
 
+// socket shutdown ref
+// -> https://stackoverflow.com/questions/855544/
+// 		is-there-a-way-to-flush-a-posix-socket
+
 __attribute__((nonnull))
 bool	ft_httpserv_loop(
 	t_httpserv *serv
 )
 {
-	int			fd;
+	int			sockfd;
 	t_sockaddr	addr;
 	socklen_t	addrlen;
 	char		buf[INET6_ADDRSTRLEN + 1];
@@ -56,13 +63,15 @@ bool	ft_httpserv_loop(
 	{
 		ft_bzero(&addr, sizeof(addr));
 		addrlen = sizeof(addr);
-		fd = accept(serv->sockfd, &addr, &addrlen);
-		if (fd < 0)
+		sockfd = accept(serv->sockfd, &addr, &addrlen);
+		if (sockfd < 0)
 			return (perror_retint("accept", false));
 		ft_bzero(buf, sizeof(buf));
 		get_ipaddr_str(&addr, buf);
 		errstr_retint("accepted connection from", buf, 0);
-		close(fd);
+		ft_httpserv_process_req(sockfd);
+		shutdown(sockfd, SHUT_RDWR);
+		close(sockfd);
 	}
 	return (true);
 }

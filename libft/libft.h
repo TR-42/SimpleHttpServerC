@@ -295,6 +295,31 @@ bool		ft_isupper(
 			;
 
 /**
+ * @brief convert `n` to string and store it in `buf`
+ * 
+ * @param n value to convert
+ * @param buf buffer to store the result (or set `NULL` to allocate new memory)
+ * @return string of `n` or `NULL` if allocation fails
+ */
+char		*ft_itoa(
+				int n,
+				char *buf
+				)
+			;
+/**
+ * @brief convert `n` to string and store it in `buf`
+ * 
+ * @param n value to convert
+ * @param buf buffer to store the result (or set `NULL` to allocate new memory)
+ * @return string of `n` or `NULL` if allocation fails
+ */
+char		*ft_ptoa(
+				size_t n,
+				char *buf
+				)
+			;
+
+/**
  * @brief get bigger value
  * 
  * @param a value1
@@ -442,6 +467,20 @@ int			ft_strcmp(
 				const char *b
 				)
 			;
+
+/**
+ * @brief copy `src` string to `dst`
+ * 
+ * @param dst destination
+ * @param src source
+ * @return `dst`
+ */
+char		*ft_strcpy(
+				char *dst,
+				const char *src
+				)
+			;
+
 /**
  * @brief duplicate `s` to newly allocated memory
  * 
@@ -450,6 +489,21 @@ int			ft_strcmp(
  */
 char		*ft_strdup(
 				const char *s1
+				)
+			;
+
+/**
+ * @brief concatenate `src` to `dest`
+ * 
+ * @param dest destination
+ * @param src source
+ * @param size size of `dest`
+ * @return length of `src` + length of `dest`
+ */
+size_t		ft_strlcat(
+				char *dest,
+				const char *src,
+				size_t size
 				)
 			;
 

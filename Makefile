@@ -31,6 +31,7 @@ SRCS_LIBFT	:=\
 	ft_islower.c\
 	ft_isspace.c\
 	ft_isupper.c\
+	ft_itoa.c\
 	ft_max.c\
 	ft_memchr.c\
 	ft_memcpy.c\
@@ -39,7 +40,9 @@ SRCS_LIBFT	:=\
 	ft_min.c\
 	ft_putstr_fd.c\
 	ft_strcmp.c\
+	ft_strcpy.c\
 	ft_strdup.c\
+	ft_strlcat.c\
 	ft_strlen.c\
 \
 	get_next_line.c\
@@ -56,6 +59,11 @@ SRCS_LIBFT	:=\
 
 SRCS_COMMON	:=\
 	ft_httpserv.c\
+	get_http_status_msg.c\
+	parse_req.c\
+	process_req.c\
+	send_response.c\
+	send_simple_res.c\
 
 SRCS_HTTP_HEADER_LIST	:=\
 	http_header_list_add.c\
