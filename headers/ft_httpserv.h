@@ -40,9 +40,9 @@ typedef struct s_httpreq
 {
 	int					fd;
 	t_sockaddr			addr;
-	const char			*method;
-	const char			*path;
-	const char			*version;
+	char				*method;
+	char				*path;
+	char				*version;
 	t_http_header_list	*header_list;
 	uint8_t				*body;
 	size_t				body_size;
@@ -79,14 +79,22 @@ bool		ft_httpserv_loop(
 			__attribute__((nonnull))
 			;
 
+void		ft_httpserv_dispose_httpreq(
+				t_httpreq *req
+				)
+			__attribute__((nonnull))
+			;
+
 const char	*get_http_status_msg(
 				t_http_status_code status_code
 				)
 			;
 
-t_httpreq	ft_httpserv_parse_req(
-				int fd
+bool		ft_httpserv_parse_req(
+				int fd,
+				t_httpreq *req
 				)
+			__attribute__((nonnull))
 			;
 
 bool		ft_httpserv_process_req(

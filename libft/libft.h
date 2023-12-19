@@ -264,6 +264,16 @@ bool		ft_islower(
 				)
 			;
 /**
+ * @brief get is `str` contains only space characters or not
+ * 
+ * @param str string
+ * @return contains only space characters or not
+ */
+bool		ft_isspace_str(
+				const char *str
+				)
+			;
+/**
  * @brief get is `c` is a space character or not
  * 
  * @param c character
@@ -456,6 +466,18 @@ void		ft_putstr_fd(
 			;
 
 /**
+ * @brief get pointer to the first occurrence of `c` in `s`
+ * 
+ * @param s source
+ * @param c value to find (as `unsigned char`)
+ * @return pointer to the first occurrence of `c` in `s`, or `NULL` if not found
+ */
+char		*ft_strchr(
+				const char *s,
+				int c
+				)
+			;
+/**
  * @brief check whether `a` and `b` are equal or not
  * 
  * @param a value1
@@ -488,6 +510,28 @@ char		*ft_strcpy(
  * @return duplicated string or `NULL` if allocation fails
  */
 char		*ft_strdup(
+				const char *s1
+				)
+			;
+/**
+ * @brief duplicate `s1` to newly allocated memory
+ * 
+ * @param s1 source
+ * @param s1_len length of `s1`
+ * @return duplicated string or `NULL` if allocation fails
+ */
+char		*ft_strndup(
+				const char *s1,
+				size_t s1_len
+				)
+			;
+/**
+ * @brief duplicate `s` to newly allocated memory
+ * 
+ * @param s1 source (it will be trimmed)
+ * @return duplicated string or `NULL` if allocation fails
+ */
+char		*ft_strdup_trim(
 				const char *s1
 				)
 			;

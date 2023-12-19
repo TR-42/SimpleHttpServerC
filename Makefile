@@ -39,6 +39,7 @@ SRCS_LIBFT	:=\
 	ft_memset.c\
 	ft_min.c\
 	ft_putstr_fd.c\
+	ft_strchr.c\
 	ft_strcmp.c\
 	ft_strcpy.c\
 	ft_strdup.c\
@@ -58,6 +59,9 @@ SRCS_LIBFT	:=\
 
 
 SRCS_COMMON	:=\
+	_res_err_40x.c\
+	_res_err_50x.c\
+	dispose_httpreq.c\
 	ft_httpserv.c\
 	get_http_status_msg.c\
 	parse_req.c\

@@ -16,24 +16,64 @@
 
 #include "libft.h"
 
+static char	*_ft_strndup(
+	const char *s1,
+	size_t s1_len
+)
+{
+	char	*p_ret;
+	size_t	i;
+
+	p_ret = (char *)malloc(s1_len + 1);
+	if (p_ret == NULL)
+		return (NULL);
+	i = 0;
+	if (s1 != NULL)
+	{
+		while (i < s1_len && s1[i] != '\0')
+		{
+			p_ret[i] = s1[i];
+			i++;
+		}
+	}
+	p_ret[i] = '\0';
+	return (p_ret);
+}
+
 char	*ft_strdup(
 	const char *s1
 )
 {
 	size_t	s1_len;
-	char	*p_ret;
-	char	*p_ret_top;
 
 	s1_len = ft_strlen(s1);
-	p_ret = (char *)malloc(s1_len + 1);
-	p_ret_top = p_ret;
-	if (p_ret == NULL)
-		return (NULL);
+	return (_ft_strndup(s1, s1_len));
+}
+
+char	*ft_strndup(
+	const char *s1,
+	size_t s1_len
+)
+{
+	s1_len = ft_strnlen(s1, s1_len);
+	return (_ft_strndup(s1, s1_len));
+}
+
+char	*ft_strdup_trim(
+	const char *s1
+)
+{
+	size_t	s1_len;
+
+	s1_len = 0;
 	if (s1 != NULL)
 	{
-		while (*s1 != '\0')
-			*p_ret++ = *s1++;
+		while (ft_isspace(*s1))
+			s1++;
+		s1_len = ft_strlen(s1);
+		while (0 < s1_len && ft_isspace(s1[s1_len - 1]))
+			s1_len--;
 	}
-	*p_ret = '\0';
-	return (p_ret_top);
+	s1_len = ft_strnlen(s1, s1_len);
+	return (_ft_strndup(s1, s1_len));
 }

@@ -13,7 +13,23 @@
 // - bool
 #include <stdbool.h>
 
+// - NULL
+#include <stddef.h>
+
 #include "libft.h"
+
+bool	ft_isspace_str(const char *str)
+{
+	if (str == NULL)
+		return (false);
+	while (*str != '\0')
+	{
+		if (!ft_isspace(*str))
+			return (false);
+		str++;
+	}
+	return (true);
+}
 
 bool	ft_isspace(int c)
 {
